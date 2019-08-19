@@ -4,8 +4,11 @@
 
 import React, { Component } from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from "react-native";
-import { createStackNavigator, createBottomTabNavigator, createAppContainer, createSwitchNavigator, TabScene } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, createAppContainer, createSwitchNavigator, createDrawerNavigator, TabScene } from 'react-navigation';
 import LinearGradient from "react-native-linear-gradient";
+import { ScrollView } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-navigation';
+import { Text, Dimensions } from 'react-native';
 import IOSIcon from "react-native-vector-icons/Ionicons";
 import ContactsScreen from './screens/ContactsScreen/ContactsScreen';
 import PaymentsScreen from './screens/PaymentsScreen/PaymentsScreen';
@@ -13,6 +16,8 @@ import CodePushScreen from './screens/CodePushScreen/CodePushScreen';
 import SplashScreen from './screens/SplashScreen/SplashScreen';
 import OthersScreen from './screens/OthersScreen/OthersScreen';
 import NavigationTabBar from './components/NavigationTabBar';
+import HamburgerIcon from './components/HamburgerIcon';
+import SideMenu from './components/SideMenu';
 import {
   CONTACTS,
   CODEPUSH,
@@ -28,13 +33,20 @@ import moveMoneyDefault from "../assets/images/moveMoneyDefault.png";
 import helpActive from "../assets/images/helpActive.png";
 import helpDefault from "../assets/images/helpDefault.png";
 import type { ImageRef } from "./data/image-ref";
-import Text from "./constants/Text";
+import BottomText from "./constants/Text";
 import {
   lightTealColor,
   darkBlueGreyColor,
   transparent,
   tabBarShadowColor
 } from "./constants/colors";
+
+import BlueScreen from './BlueScreen';
+import DefaultScreen from './DefaultScreen';
+
+
+
+
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
   focused
@@ -56,6 +68,7 @@ const ContactStack = createStackNavigator(
             headerTitleStyle: {
             fontWeight: 'bold'
             },
+          headerLeft: <HamburgerIcon />
         },
     }
 );
@@ -73,6 +86,8 @@ const PaymentStack = createStackNavigator(
             headerTitleStyle: {
                 fontWeight: 'bold'
             },
+          headerLeft: <HamburgerIcon/>
+
         },
     }
 );
@@ -111,26 +126,27 @@ const OtherStack = createStackNavigator(
     }
 );
 
+const BlueScreenStack = createStackNavigator(
+    {
+        BlueScreenNavigation: BlueScreen
+    },
+);
+
 const BottomTabNav = createBottomTabNavigator(
   {
   ContactsNavigation: {
       screen: ContactStack,
-      navigationOptions:  ({navigation}) => ({
+      navigationOptions:  {
         tabBarIcon: tabIcon(iconHomeDefault,iconHomeActive),
-        tabBarLabel: Text.footerContacts,
-        headerLeft:(<TouchableOpacity onPress={() => navigation.navigate("DrawerOpen")}>
-                    <IOSIcon name="ios-menu" size={30} />
-                  </TouchableOpacity>
-      ),
-      headerStyle: { paddingRight: 10, paddingLeft: 15 }
-      })
+        tabBarLabel: BottomText.footerContacts
+      }
     },
 
     PaymentNavigation: {
       screen: PaymentStack,
       navigationOptions:  {
         tabBarIcon: tabIcon(statementsDefault, statementsActive),
-        tabBarLabel: Text.footerPayments
+        tabBarLabel: BottomText.footerPayments
       }
     },
 
@@ -138,15 +154,15 @@ const BottomTabNav = createBottomTabNavigator(
       screen: CodePushStack,
       navigationOptions:  {
         tabBarIcon: tabIcon(moveMoneyDefault, moveMoneyActive),
-        tabBarLabel: Text.footerCodePush
+        tabBarLabel: BottomText.footerCodePush
       }
     },
 
     OtherNavigation: {
-      screen: OthersScreen,
+      screen: OtherStack,
       navigationOptions:  {
         tabBarIcon: tabIcon(helpDefault, helpActive),
-        tabBarLabel: Text.footerOthers
+        tabBarLabel: BottomText.footerOthers
       }
     }
   },
@@ -158,9 +174,46 @@ const BottomTabNav = createBottomTabNavigator(
   );
 
 
+const HamburgerNavigation = createDrawerNavigator(
+    {
+        Tabs: BottomTabNav,
+    },
+    {
+        initialRouteName: 'Tabs',
+        contentComponent: SideMenu,
+        drawerWidth: Dimensions.get('window').width - 120,  
+    }
+ );
+
+ const HamburgerStack = createStackNavigator(
+ 	 {
+        Drawer: {
+            screen: HamburgerNavigation,
+            navigationOptions: {
+                header: null,
+            },
+     	 },
+        BlueScreen: {
+          screen: BlueScreen,
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#00402e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                fontWeight: 'bold'
+            },
+        },
+    },
+        DefaultScreen: {
+            screen: DefaultScreen,
+        },
+ 	 }
+ );
+
 const InitialNavigator = createSwitchNavigator({
   Splash: SplashScreen,
-  Navigation: BottomTabNav
+  Navigation: HamburgerStack
 });
 
 export default createAppContainer(InitialNavigator);
