@@ -4,10 +4,10 @@
  
 
 import React, { Component } from 'react';
-import PaymentsScreen from './PaymentsScreen';
+import OthersScreen from './OthersScreen';
 
 export default class AppWrapper extends Component {
   render() {
-    return <PaymentsScreen />;
+    return <OthersScreen />;
   }
 }

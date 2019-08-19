@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, PermissionsAndroid,TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Text, View, PermissionsAndroid,TouchableOpacity, StatusBar} from 'react-native';
 import Contacts from 'react-native-contacts';
 import ContactsView from './ContactsView';
 
@@ -49,6 +49,12 @@ export default class ContactsScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <StatusBar 
+        barStyle = "light-content" 
+        hidden = {false}
+        backgroundColor = "#00402e"
+        translucent = {false}
+        networkActivityIndicatorVisible = {true}/>
         <ContactsView contacts={this.state.contacts} navigation={this.props.navigation} lloyds/>
         <ContactsView contacts={this.state.contacts}/>
       </View>

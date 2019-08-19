@@ -3,12 +3,15 @@
  */
 
 import React, { Component } from 'react';
-import { Image, StyleSheet, View } from "react-native";
-import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabScene } from 'react-navigation';
+import { Image, StyleSheet, View, TouchableOpacity } from "react-native";
+import { createStackNavigator, createBottomTabNavigator, createAppContainer, createSwitchNavigator, TabScene } from 'react-navigation';
 import LinearGradient from "react-native-linear-gradient";
+import IOSIcon from "react-native-vector-icons/Ionicons";
 import ContactsScreen from './screens/ContactsScreen/ContactsScreen';
 import PaymentsScreen from './screens/PaymentsScreen/PaymentsScreen';
 import CodePushScreen from './screens/CodePushScreen/CodePushScreen';
+import SplashScreen from './screens/SplashScreen/SplashScreen';
+import OthersScreen from './screens/OthersScreen/OthersScreen';
 import NavigationTabBar from './components/NavigationTabBar';
 import {
   CONTACTS,
@@ -18,6 +21,12 @@ import {
 } from "./constants/routes";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
+import statementsActive from "../assets/images/statementsActive.png";
+import statementsDefault from "../assets/images/statementsDefault.png"
+import moveMoneyActive from "../assets/images/moveMoneyActive.png";
+import moveMoneyDefault from "../assets/images/moveMoneyDefault.png";
+import helpActive from "../assets/images/helpActive.png";
+import helpDefault from "../assets/images/helpDefault.png";
 import type { ImageRef } from "./data/image-ref";
 import Text from "./constants/Text";
 import {
@@ -33,38 +42,12 @@ const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
   <Image source={focused ? activeIcon : defaultIcon} width={28} height={28} />
 );
 
-const withShadow = Component => props => (
-     <View style={styles.shadowContainer}>
-       <Component {...props} />
-       <LinearGradient
-         colors={[transparent, tabBarShadowColor]}
-         style={styles.shadow}
-         pointerEvents="none"
-       />
-     </View>
- );
-
- export const getTabTestId = (routeName: string) => {
-  switch (routeName) {
-    case CONTACTS:
-      return "contacts-tab-button";
-    case STATEMENTS:
-      return "statements-tab-button";
-    case CODEPUSH:
-      return "codepush-tab-button";
-    case OTHERS:
-      return "others-groups-button";
-    default:
-      return "";
-  }
-};
 
 const ContactStack = createStackNavigator(
     {
         ContactsNavigation: ContactsScreen
     },
     {
-        initialRouteName: 'ContactsNavigation',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#00402e',
@@ -79,10 +62,9 @@ const ContactStack = createStackNavigator(
 
 const PaymentStack = createStackNavigator(
     {
-        PaymentNavigation: withShadow(PaymentsScreen)
+        PaymentNavigation: PaymentsScreen
      },
     {
-        initialRouteName: 'PaymentNavigation',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#00402e',
@@ -97,10 +79,9 @@ const PaymentStack = createStackNavigator(
 
 const CodePushStack = createStackNavigator(
     {
-        CodePushNavigation: withShadow(CodePushScreen)
+        CodePushNavigation: CodePushScreen
     },
     {
-        initialRouteName: 'CodePushNavigation',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#00402e',
@@ -115,10 +96,9 @@ const CodePushStack = createStackNavigator(
 
 const OtherStack = createStackNavigator(
     {
-        OtherNavigation: withShadow(CodePushScreen)
+        OtherNavigation: OthersScreen
     },
     {
-        initialRouteName: 'CodePushNavigation',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#00402e',
@@ -135,16 +115,21 @@ const BottomTabNav = createBottomTabNavigator(
   {
   ContactsNavigation: {
       screen: ContactStack,
-      navigationOptions:  {
+      navigationOptions:  ({navigation}) => ({
         tabBarIcon: tabIcon(iconHomeDefault,iconHomeActive),
-        tabBarLabel: Text.footerContacts
-      }
+        tabBarLabel: Text.footerContacts,
+        headerLeft:(<TouchableOpacity onPress={() => navigation.navigate("DrawerOpen")}>
+                    <IOSIcon name="ios-menu" size={30} />
+                  </TouchableOpacity>
+      ),
+      headerStyle: { paddingRight: 10, paddingLeft: 15 }
+      })
     },
 
     PaymentNavigation: {
       screen: PaymentStack,
       navigationOptions:  {
-        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarIcon: tabIcon(statementsDefault, statementsActive),
         tabBarLabel: Text.footerPayments
       }
     },
@@ -152,38 +137,44 @@ const BottomTabNav = createBottomTabNavigator(
      CodePushNavigation: {
       screen: CodePushStack,
       navigationOptions:  {
-        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarIcon: tabIcon(moveMoneyDefault, moveMoneyActive),
         tabBarLabel: Text.footerCodePush
       }
     },
 
     OtherNavigation: {
-      screen: CodePushStack,
+      screen: OthersScreen,
       navigationOptions:  {
-        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarIcon: tabIcon(helpDefault, helpActive),
         tabBarLabel: Text.footerOthers
       }
     }
   },
-
+  
   {
     tabBarComponent: NavigationTabBar,
-    tabBarPosition: "bottom",
-    cardStyle: {
-      backgroundColor: "blue"
-    }
+    tabBarPosition: "bottom"
   }
   );
 
 
+const InitialNavigator = createSwitchNavigator({
+  Splash: SplashScreen,
+  Navigation: BottomTabNav
+});
 
-const AppNavigation = createAppContainer(BottomTabNav);
+export default createAppContainer(InitialNavigator);
+
+
+/* const AppNavigation = createAppContainer(BottomTabNav);
 
 export default class Navigation extends Component {
     render() {
         return <AppNavigation/>;
     }
-}
+} */
+
+
 
 const styles = StyleSheet.create({
   shadowContainer: {

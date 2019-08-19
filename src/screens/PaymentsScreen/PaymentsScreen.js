@@ -4,7 +4,6 @@ import { Card, Avatar } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 import AvatarImage from "../../../assets/images/AvatarMale.png";
 
-
 const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
@@ -32,13 +31,13 @@ export default class PaymentScreen extends React.Component {
             date:
                 date + ' ' + aMonth + ' ' + year
         });
-
     }
+
 
     render() {
         const { navigation } = this.props;
-        const givenName = navigation.getParam('givenName', 'NO-ID');
-        const familyName = navigation.getParam('familyName', 'some default value');
+        const givenName = navigation.getParam('givenName', 'David Jason');
+        const familyName = navigation.getParam('familyName', '347654  08642347');
         return (
             <View style={styles.container}>
                 <Card>
@@ -49,13 +48,13 @@ export default class PaymentScreen extends React.Component {
                 </Card>
                 <Card>
                     <Text style={styles.title}>To</Text>
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
-                            <Text style={styles.type}>{givenName} Davidson</Text>
+                            <Text style={styles.type}>{(givenName)}</Text>
                         </View>
                         <View>
                             <Avatar
-                                size="large"
+                                size="medium"
                                 rounded
                                 source={AvatarImage}
                                 activeOpacity={0.5}
@@ -98,18 +97,23 @@ const styles = StyleSheet.create({
     type: {
         fontSize: 16,
         color: 'black',
-        marginBottom: 5,
+        marginBottom: 6,
+        textTransform: 'uppercase'
+    },
+    type2: {
+        fontSize: 10,
+        color: 'black',
         textTransform: 'uppercase'
     },
     type1: {
         fontSize: 16,
         color: 'black',
-        marginBottom: 5,
+        marginBottom: 6,
     },
     account: {
         fontSize: 15,
         color: 'gray',
-        marginBottom: 5,
+        marginBottom: 6,
         fontWeight: 'bold'
     },
     account1: {
