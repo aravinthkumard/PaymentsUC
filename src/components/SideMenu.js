@@ -5,9 +5,8 @@ import {ScrollView, Text, View, TouchableOpacity, StyleSheet,SafeAreaView} from 
 import { StackNavigator } from 'react-navigation';
 import { DrawerActions } from 'react-navigation';
 import { Avatar, Icon } from 'react-native-elements';
-
-
-
+import Profile from "../../assets/images/Profile.png";
+ 
 
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
@@ -27,7 +26,7 @@ class SideMenu extends Component {
         <Avatar
           size="medium"
           rounded
-          source={{uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}}
+          source={Profile}
           activeOpacity={0.7}
           />
         </View>
