@@ -181,8 +181,8 @@ const HamburgerNavigation = createDrawerNavigator(
     {
         initialRouteName: 'Tabs',
         contentComponent: SideMenu,
-        drawerWidth: Dimensions.get('window').width - 120,  
-    }
+/*         drawerWidth: Dimensions.get('window').width - 120, */  
+    },
  );
 
  const HamburgerStack = createStackNavigator(
@@ -195,15 +195,6 @@ const HamburgerNavigation = createDrawerNavigator(
      	 },
         BlueScreen: {
           screen: BlueScreen,
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: '#00402e',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                fontWeight: 'bold'
-            },
-        },
     },
         DefaultScreen: {
             screen: DefaultScreen,
