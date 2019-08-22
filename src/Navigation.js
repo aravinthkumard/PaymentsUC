@@ -15,6 +15,16 @@ import PaymentsScreen from './screens/PaymentsScreen/PaymentsScreen';
 import CodePushScreen from './screens/CodePushScreen/CodePushScreen';
 import SplashScreen from './screens/SplashScreen/SplashScreen';
 import OthersScreen from './screens/OthersScreen/OthersScreen';
+import MoveMoneyScreen from './screens/MoveMoneyScreen/MoveMoneyScreen';
+import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
+import DirectDebitScreen from './screens/DirectDebitScreen/DirectDebitScreen';
+import StatementsScreen from './screens/StatementsScreen/StatementsScreen';
+import CreditCardScreen from './screens/CreditCardScreen/CreditCardScreen';
+import LoansScreen from './screens/LoansScreen/LoansScreen';
+import OverdraftsScreen from './screens/OverdraftsScreen/OverdraftsScreen';
+import DocumentsScreen from './screens/DocumentsScreen/DocumentsScreen';
+import SupportScreen from './screens/SupportScreen/SupportScreen';
+import SettingsScreen from './screens/SettingsScreen/SettingsScreen';
 import NavigationTabBar from './components/NavigationTabBar';
 import HamburgerIcon from './components/HamburgerIcon';
 import SideMenu from './components/SideMenu';
@@ -40,12 +50,6 @@ import {
   transparent,
   tabBarShadowColor
 } from "./constants/colors";
-
-import BlueScreen from './BlueScreen';
-import DefaultScreen from './DefaultScreen';
-
-
-
 
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
@@ -87,7 +91,6 @@ const PaymentStack = createStackNavigator(
                 fontWeight: 'bold'
             },
           headerLeft: <HamburgerIcon/>
-
         },
     }
 );
@@ -105,6 +108,7 @@ const CodePushStack = createStackNavigator(
             headerTitleStyle: {
                 fontWeight: 'bold'
             },
+          headerLeft: <HamburgerIcon/>
         },
     }
 );
@@ -122,14 +126,9 @@ const OtherStack = createStackNavigator(
             headerTitleStyle: {
                 fontWeight: 'bold'
             },
+          headerLeft: <HamburgerIcon/>
         },
     }
-);
-
-const BlueScreenStack = createStackNavigator(
-    {
-        BlueScreenNavigation: BlueScreen
-    },
 );
 
 const BottomTabNav = createBottomTabNavigator(
@@ -180,8 +179,7 @@ const HamburgerNavigation = createDrawerNavigator(
     },
     {
         initialRouteName: 'Tabs',
-        contentComponent: SideMenu,
-/*         drawerWidth: Dimensions.get('window').width - 120, */  
+        contentComponent: SideMenu,  
     },
  );
 
@@ -193,13 +191,48 @@ const HamburgerNavigation = createDrawerNavigator(
                 header: null,
             },
      	 },
-        BlueScreen: {
-          screen: BlueScreen,
+        MoveMoneyScreen: {
+          screen: MoveMoneyScreen,
     },
-        DefaultScreen: {
-            screen: DefaultScreen,
-        },
- 	 }
+    ProfileScreen: {
+          screen: ProfileScreen,
+    },
+    DirectDebitScreen: {
+          screen: DirectDebitScreen,
+    },
+    StatementsScreen: {
+          screen: StatementsScreen,
+    },
+    CreditCardScreen: {
+          screen: CreditCardScreen,
+    },
+    LoansScreen: {
+          screen: LoansScreen,
+    },
+    OverdraftsScreen: {
+          screen: OverdraftsScreen,
+    },
+    DocumentsScreen: {
+          screen: DocumentsScreen,
+    },
+    SupportScreen: {
+          screen: SupportScreen,
+    },
+    SettingsScreen: {
+          screen: SettingsScreen,
+    }
+ 	 },
+    {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#00402e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+      fontWeight: 'bold',
+      },
+    },
+    }
  );
 
 const InitialNavigator = createSwitchNavigator({
@@ -208,17 +241,6 @@ const InitialNavigator = createSwitchNavigator({
 });
 
 export default createAppContainer(InitialNavigator);
-
-
-/* const AppNavigation = createAppContainer(BottomTabNav);
-
-export default class Navigation extends Component {
-    render() {
-        return <AppNavigation/>;
-    }
-} */
-
-
 
 const styles = StyleSheet.create({
   shadowContainer: {

@@ -42,25 +42,15 @@ export default class PaymentScreen extends React.Component {
             <View style={styles.container}>
                 <Card>
                     <Text style={styles.title}>From</Text>
-                    <Text style={styles.type}>SAVINGS ACCOUNT</Text>
+                    <Text style={styles.type}>Savings Account</Text>
                     <Text style={styles.account}>345238  00856423</Text>
                     <Text style={styles.type1}>Available Balance: £564.98</Text>
                 </Card>
                 <Card>
                     <Text style={styles.title}>To</Text>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <View>
-                            <Text style={styles.type}>{(givenName)}</Text>
-                        </View>
-                        <View>
-                            <Avatar
-                                size="medium"
-                                rounded
-                                source={AvatarImage}
-                                activeOpacity={0.5}
-                            />
-                        </View>
-                    </View>
+                    <View style={{flex:0, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View>
+                    <Text style={styles.type2}>{(givenName)}</Text>
                     <Text style={styles.account1}>{(familyName)}</Text>
                     <Text style={styles.title}>Amount</Text>
                     <TextInput style={{ color: 'gray', fontSize: 16, fontWeight: 'bold' }}>£ 00.00</TextInput>
@@ -68,8 +58,16 @@ export default class PaymentScreen extends React.Component {
                     <TextInput style={{ color: 'gray', fontSize: 16 }}>{this.state.date}</TextInput>
                     <Text style={styles.title}>Reference</Text>
                     <TextInput style={styles.reference}></TextInput>
+                    </View>
+                     <View>
+                        <Avatar
+                            size="medium"
+                            rounded
+                            source={AvatarImage}
+                            activeOpacity={0.5}/>
+                    </View>
+                    </View>
                 </Card>
-
                 <TouchableOpacity onPress={() => {
                     this.props.navigation.navigate('CodePushNavigation');
                 }}>
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
     type2: {
-        fontSize: 10,
+        fontSize: 16,
         color: 'black',
         textTransform: 'uppercase'
     },
@@ -119,7 +117,7 @@ const styles = StyleSheet.create({
     account1: {
         fontSize: 15,
         color: 'gray',
-        marginTop: 25,
+        marginTop: 20,
         fontWeight: 'bold',
         marginBottom: 8
     },

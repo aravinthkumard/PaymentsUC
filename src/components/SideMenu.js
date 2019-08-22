@@ -7,8 +7,12 @@ import { DrawerActions } from 'react-navigation';
 import { Avatar, Icon } from 'react-native-elements';
 import Profile from "../../assets/images/Profile.png";
  
-
 class SideMenu extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
   navigateToScreen = (route) => () => {
     const navigateAction = NavigationActions.navigate({
       routeName: route
@@ -36,50 +40,70 @@ class SideMenu extends Component {
         </View>
         </View>
         <ScrollView>
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('ProfileScreen');
+          this. props.navigation.closeDrawer();}}>
          <Icon name='user-circle' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Profile</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('MoveMoneyScreen');
+          this. props.navigation.closeDrawer();}}>
          <Icon name='send' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Move Money</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('DirectDebitScreen');
+          this. props.navigation.closeDrawer();}}>
         <Icon name='arrow-circle-right' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Direct Debit</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('StatementsScreen');
+          this. props.navigation.closeDrawer();}}>
          <Icon name='folder-open' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Statements</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('CreditCardScreen');
+          this. props.navigation.closeDrawer();}}>
          <Icon name='credit-card' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Credit Card</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('LoansScreen');
+          this. props.navigation.closeDrawer();}}>
         <Icon name='money' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Loans</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('OverdraftsScreen');
+          this. props.navigation.closeDrawer();}}>
          <Icon name='chevron-circle-left' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Overdrafts</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('DocumentsScreen');
+          this. props.navigation.closeDrawer();}}>
          <Icon name='folder' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Documents</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
-         <Icon name='info' type='font-awesome' size={22} color='#00402e'/>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('SupportScreen');
+          this. props.navigation.closeDrawer();}}>
+         <Icon name='info-circle' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Support</Text></TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={() => {
+          this. props.navigation.navigate('SettingsScreen');
+          this. props.navigation.closeDrawer();}}>
          <Icon name='cogs' type='font-awesome' size={22} color='#00402e'/>
         <Text style={styles.menuText}>Settings</Text></TouchableOpacity>
         </ScrollView>
         <SafeAreaView style={{ flex: 0, backgroundColor: '#00402e' }}> 
         <TouchableOpacity style={styles.footerContainer}>
          <View style={styles.footerWrapper}>
-         <Icon name='power-off' type='font-awesome' size={25} color='red'/>
+         <Icon name='power-off' type='font-awesome' size={25} color='#990000'/>
         <Text style={styles.footerText}>Log Off</Text>
         </View>
         </TouchableOpacity>
@@ -125,7 +149,7 @@ const styles = StyleSheet.create({
     flex: 1, 
     flexDirection: 'row', 
     alignItems: 'center', 
-    marginLeft: 15,
+    marginLeft: 100,
     marginTop: 10,
   }, 
    customerName: {
