@@ -10,6 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-navigation';
 import { Text, Dimensions } from 'react-native';
 import IOSIcon from "react-native-vector-icons/Ionicons";
+import LoginScreen from './screens/LoginScreen/LoginScreen';
 import ContactsScreen from './screens/ContactsScreen/ContactsScreen';
 import PaymentsScreen from './screens/PaymentsScreen/PaymentsScreen';
 import CodePushScreen from './screens/CodePushScreen/CodePushScreen';
@@ -58,6 +59,17 @@ const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
   <Image source={focused ? activeIcon : defaultIcon} width={28} height={28} />
 );
 
+
+const LoginStack = createStackNavigator(
+    {
+        LoginNavigation: LoginScreen
+    },
+    {
+        defaultNavigationOptions: {
+            header: null
+        },
+    },
+);
 
 const ContactStack = createStackNavigator(
     {
@@ -124,7 +136,7 @@ const OtherStack = createStackNavigator(
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                fontWeight: 'bold'
+            fontWeight: 'bold'
             },
           headerLeft: <HamburgerIcon/>
         },
@@ -133,7 +145,8 @@ const OtherStack = createStackNavigator(
 
 const BottomTabNav = createBottomTabNavigator(
   {
-  ContactsNavigation: {
+
+    ContactsNavigation: {
       screen: ContactStack,
       navigationOptions:  {
         tabBarIcon: tabIcon(iconHomeDefault,iconHomeActive),
@@ -191,7 +204,11 @@ const HamburgerNavigation = createDrawerNavigator(
                 header: null,
             },
      	 },
-        MoveMoneyScreen: {
+        
+    LoginNavigation: {
+      screen:LoginStack,
+    },
+    MoveMoneyScreen: {
           screen: MoveMoneyScreen,
     },
     ProfileScreen: {
@@ -223,20 +240,21 @@ const HamburgerNavigation = createDrawerNavigator(
     }
  	 },
     {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#00402e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-      fontWeight: 'bold',
-      },
-    },
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#00402e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                fontWeight: 'bold'
+            },
+        }
     }
  );
 
 const InitialNavigator = createSwitchNavigator({
   Splash: SplashScreen,
+  Login: LoginStack,
   Navigation: HamburgerStack
 });
 

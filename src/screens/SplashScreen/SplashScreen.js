@@ -24,7 +24,7 @@ class SplashScreen extends React.Component {
     const data = await this.performTimeConsumingTask();
 
     if (data !== null) {
-      this.props.navigation.navigate('Navigation');
+      this.props.navigation.navigate('Login');
     }
   }
 

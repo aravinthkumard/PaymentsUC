@@ -101,7 +101,9 @@ class SideMenu extends Component {
         <Text style={styles.menuText}>Settings</Text></TouchableOpacity>
         </ScrollView>
         <SafeAreaView style={{ flex: 0, backgroundColor: '#00402e' }}> 
-        <TouchableOpacity style={styles.footerContainer}>
+        <TouchableOpacity style={styles.footerContainer} onPress={() => {
+          this. props.navigation.navigate('Login');
+          this. props.navigation.closeDrawer();}}>
          <View style={styles.footerWrapper}>
          <Icon name='power-off' type='font-awesome' size={25} color='#990000'/>
         <Text style={styles.footerText}>Log Off</Text>
