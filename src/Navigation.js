@@ -10,6 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-navigation';
 import { Text, Dimensions } from 'react-native';
 import IOSIcon from "react-native-vector-icons/Ionicons";
+import {YellowBox} from 'react-native';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import ContactsScreen from './screens/ContactsScreen/ContactsScreen';
 import PaymentsScreen from './screens/PaymentsScreen/PaymentsScreen';
@@ -52,6 +53,7 @@ import {
   tabBarShadowColor
 } from "./constants/colors";
 
+YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
   focused

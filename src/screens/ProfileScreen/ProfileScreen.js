@@ -19,8 +19,7 @@ export default class Profile extends Component {
   }
 
     render() {
-      const {sideDrawer} = this.props;
-      Alert.alert(sideDrawer);    
+      const {sideDrawer} = this.props;    
     return (
         <View style={styles.container}>
         <FlatList data={sideDrawer} renderItem={({ item }) => (<View><Text style={styles.title}>{`${item.iconName} `} {item.sideBarName}</Text> </View>)}
