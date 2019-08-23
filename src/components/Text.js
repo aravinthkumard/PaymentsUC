@@ -52,22 +52,20 @@ class Text extends React.PureComponent<Props> {
     } = this.props;
     const typedType: TextType = (type: any);
     const typedColor: ColorType = (color: any);
-    return markdown ? (
-      <Markdown
-        style={style}
-        markdownStyles={mergeDeepRight(
-          mergeDeepRight(textStyles, markdownDefaultStyles),
-          markdownStyle
-        )}
-        renderImage={() => null}
-        {...otherProps}
-      />
-    ) : (
-      <RnText
-        style={[styles[typedType], styles[typedColor], style]}
-        {...otherProps}
-      />
-    );
+    return markdown
+      ? <Markdown
+          style={style}
+          markdownStyles={mergeDeepRight(
+            mergeDeepRight(textStyles, markdownDefaultStyles),
+            markdownStyle
+          )}
+          renderImage={() => null}
+          {...otherProps}
+        />
+      : <RnText
+          style={[styles[typedType], styles[typedColor], style]}
+          {...otherProps}
+        />;
   }
 }
 

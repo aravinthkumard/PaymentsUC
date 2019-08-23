@@ -4,7 +4,6 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
-
 const createTouchable = BaseTouchable => {
   const Touchable = ({ children, style, ...props }: TouchableProps) => {
     const accessibilityTraits =

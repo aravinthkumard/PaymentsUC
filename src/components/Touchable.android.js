@@ -16,16 +16,17 @@ const createTouchable = BaseTouchable => {
     onPress,
     disabled,
     ...props
-  }: TouchableProps) => (
+  }: TouchableProps) =>
     <BaseTouchable
       background={TouchableNativeFeedback.SelectableBackground()}
       onPress={onPress}
       disabled={disabled}
       {...props}
     >
-      <View style={[styles.defaults, style]}>{children}</View>
-    </BaseTouchable>
-  );
+      <View style={[styles.defaults, style]}>
+        {children}
+      </View>
+    </BaseTouchable>;
 
   Touchable.defaultProps = {
     ...TouchableDefaultProps

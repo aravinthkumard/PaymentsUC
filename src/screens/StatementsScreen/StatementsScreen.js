@@ -2,38 +2,36 @@
  * @format
  */
 
-import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
-
+import React, { Component } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Icon from "react-native-vector-icons/SimpleLineIcons";
 
 export default class Statements extends Component {
-
-    static navigationOptions = {
-    title: 'Statements',
-  }
+  static navigationOptions = {
+    title: "Statements"
+  };
 
   constructor(props) {
     super(props);
   }
-    render() {
+  render() {
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.title}>Statements</Text>
-        </View>
+      </View>
     );
-    }
- }
-  const styles = StyleSheet.create({
-    container: {
+  }
+}
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    },
-    title: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white"
+  },
+  title: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    }
- });
+    textAlign: "center",
+    margin: 10
+  }
+});

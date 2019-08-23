@@ -6,22 +6,21 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
 //import codePush from "react-native-code-push";
 
-import NoUpdate from '../../../assets/images/NoUpdate.png';
+import NoUpdate from "../../../assets/images/NoUpdate.png";
 
 export default class CodePushDemo extends Component {
-
   static navigationOptions = {
-    title: 'CodePush',
+    title: "CodePush"
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      date: '',
+      date: ""
     };
   }
 
@@ -31,10 +30,8 @@ export default class CodePushDemo extends Component {
     var min = new Date().getMinutes();
     var sec = new Date().getMinutes();
     that.setState({
-      date:
-        hour + ':' + min + ':' + sec
+      date: hour + ":" + min + ":" + sec
     });
-
   }
 
   render() {
@@ -46,41 +43,44 @@ export default class CodePushDemo extends Component {
         <Image style={{ width: 290, height: 290 }} source={NoUpdate} />
         {/*<Image style={{ width: 350, height: 250 }} source={require('./image.png')} />*/}
         <Text style={styles.codePushText3}>No update pushed yet!</Text>
-        <Text style={styles.codePushText3}>Your app has been Updated at {this.state.date}</Text>
+        <Text style={styles.codePushText3}>
+          Your app has been Updated at {this.state.date}
+        </Text>
       </View>
     );
   }
 }
 
-{/*CodePushDemo = codePush({ installMode: codePush.InstallMode.IMMEDIATE })(CodePushDemo);*/ }
+{
+  /*CodePushDemo = codePush({ installMode: codePush.InstallMode.IMMEDIATE })(CodePushDemo);*/
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'ivory',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "ivory"
   },
   welcome: {
     fontSize: 22,
-    textAlign: 'center',
+    textAlign: "center",
     margin: 10,
-    color: 'darkblue',
-    fontWeight: 'bold'
+    color: "darkblue",
+    fontWeight: "bold"
   },
   codePushText1: {
     fontSize: 18,
-    color: 'red',
-    fontWeight: 'bold'
+    color: "red",
+    fontWeight: "bold"
   },
   codePushText2: {
     fontSize: 20,
-    color: 'blue'
+    color: "blue"
   },
   codePushText3: {
     fontSize: 15,
-    color: 'navy',
-    fontWeight: 'bold'
+    color: "navy",
+    fontWeight: "bold"
   }
 });
-

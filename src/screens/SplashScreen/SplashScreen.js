@@ -1,22 +1,19 @@
 /**
  * @format
  */
- 
 
-import React from 'react';
-import { View, Text, Image,StatusBar, Platform} from 'react-native';
-import LloydsHorse from '../../../assets/images/LloydsHorse.png';
-
+import React from "react";
+import { View, Text, Image, StatusBar, Platform } from "react-native";
+import LloydsHorse from "../../../assets/images/LloydsHorse.png";
 
 class SplashScreen extends React.Component {
-  performTimeConsumingTask = async() => {
-    return new Promise((resolve) =>
-      setTimeout(
-        () => { resolve('result') },
-        2500
-      )
-    )
-  }
+  performTimeConsumingTask = async () => {
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve("result");
+      }, 2500)
+    );
+  };
 
   async componentDidMount() {
     // Preload data from an external API
@@ -24,27 +21,25 @@ class SplashScreen extends React.Component {
     const data = await this.performTimeConsumingTask();
 
     if (data !== null) {
-      this.props.navigation.navigate('Login');
+      this.props.navigation.navigate("Login");
     }
   }
 
   render() {
     return (
       <View style={styles.container}>
-      <StatusBar 
-        barStyle = "dark-content" 
-        hidden = {false}
-        backgroundColor = "#FFFFFF"
-        translucent = {false}
-        networkActivityIndicatorVisible = {true}
+        <StatusBar
+          barStyle="dark-content"
+          hidden={false}
+          backgroundColor="#FFFFFF"
+          translucent={false}
+          networkActivityIndicatorVisible={true}
         />
         <View style={styles.hoursePlan}>
-            <Image style={styles.hourse} source={LloydsHorse}/>
+          <Image style={styles.hourse} source={LloydsHorse} />
         </View>
-        <Text style={styles.text} > Lloyds Bank
-        </Text>
-        <Text style={styles.moto} > By your side
-        </Text>
+        <Text style={styles.text}> Lloyds Bank</Text>
+        <Text style={styles.moto}> By your side</Text>
       </View>
     );
   }
@@ -59,7 +54,7 @@ const styles = {
     alignItems: "center"
   },
   hoursePlan: {
-    width: 172, 
+    width: 172,
     height: 236,
     marginBottom: 200,
     flexDirection: "column",
@@ -73,17 +68,17 @@ const styles = {
   text: {
     position: "absolute",
     bottom: 100,
-    color: '#00402e',
+    color: "#00402e",
     fontSize: 32,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   moto: {
     position: "absolute",
     bottom: 80,
-    color: '#5A5D5C',
+    color: "#5A5D5C",
     fontSize: 15,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
-}
+};
 
 export default SplashScreen;

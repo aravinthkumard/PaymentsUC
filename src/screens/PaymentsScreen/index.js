@@ -1,10 +1,9 @@
 /**
  * @format
  */
- 
 
-import React, { Component } from 'react';
-import PaymentsScreen from './PaymentsScreen';
+import React, { Component } from "react";
+import PaymentsScreen from "./PaymentsScreen";
 
 export default class AppWrapper extends Component {
   render() {

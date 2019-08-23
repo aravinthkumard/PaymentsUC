@@ -2,135 +2,142 @@
  * @format
  */
 
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, PermissionsAndroid,TouchableOpacity, StatusBar} from 'react-native';
-import Contacts from 'react-native-contacts';
-import ContactsView from './ContactsView';
-
+import React, { Component } from "react";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  PermissionsAndroid,
+  TouchableOpacity,
+  StatusBar
+} from "react-native";
+import Contacts from "react-native-contacts";
+import ContactsView from "./ContactsView";
 
 export default class ContactsScreen extends Component {
-
   static navigationOptions = {
-    title: 'Contacts',
+    title: "Contacts"
   };
 
   constructor(props) {
     super(props);
     this.state = {
       contacts: null,
-      myContacts: null,
-    }
+      myContacts: null
+    };
 
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === "ios") {
       Contacts.getAll((err, contacts) => {
         if (err) {
           throw err;
         }
-        this.setState({ contacts })
-      })
-    } else if (Platform.OS === 'android') {
-      PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-        {
-          title: 'Contacts',
-          message: 'This app would like to view your contacts.'
-        }
-      ).then(() => {
+        this.setState({ contacts });
+      });
+    } else if (Platform.OS === "android") {
+      PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
+        title: "Contacts",
+        message: "This app would like to view your contacts."
+      }).then(() => {
         Contacts.getAll((err, contacts) => {
-          if (err === 'denied') {
+          if (err === "denied") {
           } else {
-            this.setState({ contacts })
+            this.setState({ contacts });
           }
-        })
-      })
+        });
+      });
     }
   }
 
   render() {
     return (
       <View style={styles.container}>
-      <StatusBar 
-        barStyle = "light-content" 
-        hidden = {false}
-        backgroundColor = "#00402e"
-        translucent = {false}
-        networkActivityIndicatorVisible = {true}/>
-        <ContactsView contacts={this.state.contacts} navigation={this.props.navigation} lloyds/>
-        <ContactsView contacts={this.state.contacts}/>
+        <StatusBar
+          barStyle="light-content"
+          hidden={false}
+          backgroundColor="#00402e"
+          translucent={false}
+          networkActivityIndicatorVisible={true}
+        />
+        <ContactsView
+          contacts={this.state.contacts}
+          navigation={this.props.navigation}
+          lloyds
+        />
+        <ContactsView contacts={this.state.contacts} />
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: "column"
   },
   phones: {
     fontSize: 15,
-    textAlign: 'left',
+    textAlign: "left",
     marginLeft: 52
   },
   contact_details: {
-    color: 'black',
+    color: "black",
     fontSize: 18,
     marginTop: 7,
     marginBottom: 5,
     marginLeft: 12
   },
   line: {
-    borderBottomColor: 'gainsboro',
+    borderBottomColor: "gainsboro",
     borderBottomWidth: 1,
     marginTop: 5,
-    marginBottom: 5,
+    marginBottom: 5
   },
   buttonWrapper: {
-    backgroundColor: '#00543c',
+    backgroundColor: "#00543c",
     marginTop: 7,
     marginRight: 10
-
   },
   buttonText: {
-    justifyContent: 'center',
-    alignSelf: 'center',
+    justifyContent: "center",
+    alignSelf: "center",
     marginTop: 2,
     marginBottom: 2,
     marginHorizontal: 2,
     elevation: 1,
-    color: '#FFFFFF',
-    fontWeight: 'bold'
+    color: "#FFFFFF",
+    fontWeight: "bold"
   },
   title: {
     marginTop: 6,
     marginBottom: 6,
-    color: '#00402e',
-    fontWeight: 'bold',
+    color: "#00402e",
+    fontWeight: "bold",
     marginLeft: 15,
     fontSize: 16
   },
   footer: {
-    position: 'absolute',
+    position: "absolute",
     flex: 1,
     left: 0,
     right: 0,
     bottom: -10,
-    backgroundColor: 'lightgrey',
-    flexDirection: 'row',
+    backgroundColor: "lightgrey",
+    flexDirection: "row",
     height: 62,
-    alignItems: 'center',
+    alignItems: "center"
   },
   bottomButtons: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: "column"
   },
   footerText: {
-    color: '#00402e',
-    alignItems: 'center',
+    color: "#00402e",
+    alignItems: "center",
     fontSize: 15,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   card: {
     flex: 1,
@@ -142,9 +149,9 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginLeft: 5,
     borderWidth: 0.5,
-    borderColor: 'gray',
+    borderColor: "gray"
   },
   container1: {
-    flex: 1,
+    flex: 1
   }
 });
