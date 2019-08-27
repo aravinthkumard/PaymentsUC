@@ -11,7 +11,8 @@ export default class AppWrapper extends Component {
     super(props);
     YellowBox.ignoreWarnings([
       "Warning: Each child",
-      "Warning: componentWillUpdate"
+      "Warning: componentWillUpdate",
+      "Warning: componentWillReceiveProps"
     ]);
   }
 

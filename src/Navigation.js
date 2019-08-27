@@ -3,7 +3,13 @@
  */
 
 import React, { Component } from "react";
-import { Image, StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  StatusBar
+} from "react-native";
 import {
   createStackNavigator,
   createBottomTabNavigator,
@@ -19,6 +25,10 @@ import LinearGradient from "react-native-linear-gradient";
 import { ScrollView } from "react-native-gesture-handler";
 import IOSIcon from "react-native-vector-icons/Ionicons";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import HomeScreen from "./screens/HomeScreen/Home";
+import AccountSummary from "./screens/HomeScreen/AccountSummary";
+import CardSummary from "./screens/HomeScreen/CardSummary";
+import LoanSummary from "./screens/HomeScreen/LoanSummary";
 import ContactsScreen from "./screens/ContactsScreen/ContactsScreen";
 import PaymentsScreen from "./screens/PaymentsScreen/PaymentsScreen";
 import CodePushScreen from "./screens/CodePushScreen/CodePushScreen";
@@ -48,6 +58,8 @@ import {
 } from "./constants/colors";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
+import contactsActive from "../assets/images/contactsActive.png";
+import contactsDefault from "../assets/images/contactsDefault.png";
 import statementsActive from "../assets/images/statementsActive.png";
 import statementsDefault from "../assets/images/statementsDefault.png";
 import moveMoneyActive from "../assets/images/moveMoneyActive.png";
@@ -67,6 +79,75 @@ const LoginStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       header: null
+    }
+  }
+);
+
+const HomeStack = createStackNavigator(
+  {
+    HomeNavigation: HomeScreen
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#00402e"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold"
+      },
+      headerLeft: <HamburgerIcon />
+    }
+  }
+);
+
+const AccountStack = createStackNavigator(
+  {
+    AccountNavigation: AccountSummary
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#00402e"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold"
+      }
+    }
+  }
+);
+
+const CardStack = createStackNavigator(
+  {
+    CardNavigation: CardSummary
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#00402e"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold"
+      }
+    }
+  }
+);
+
+const LoanStack = createStackNavigator(
+  {
+    LoanNavigation: LoanSummary
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#00402e"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold"
+      }
     }
   }
 );
@@ -145,10 +226,18 @@ const OtherStack = createStackNavigator(
 
 const BottomTabNav = createBottomTabNavigator(
   {
+    HomeNavigation: {
+      screen: HomeStack,
+      navigationOptions: {
+        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarLabel: BottomText.footerHome
+      }
+    },
+
     ContactsNavigation: {
       screen: ContactStack,
       navigationOptions: {
-        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarIcon: tabIcon(contactsDefault, contactsActive),
         tabBarLabel: BottomText.footerContacts
       }
     },
@@ -204,6 +293,15 @@ const HamburgerStack = createStackNavigator(
 
     LoginNavigation: {
       screen: LoginStack
+    },
+    AccountSummary: {
+      screen: AccountSummary
+    },
+    CardSummary: {
+      screen: CardSummary
+    },
+    LoanSummary: {
+      screen: LoanSummary
     },
     MoveMoneyScreen: {
       screen: MoveMoneyScreen
