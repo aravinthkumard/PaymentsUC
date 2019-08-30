@@ -13,7 +13,9 @@ import {
   StatusBar
 } from "react-native";
 import Contacts from "react-native-contacts";
-import ContactsView from "./ContactsView";
+import LloydsContactsView from "./LloydsContactsView";
+import OtherContactsView from "./OtherContactsView";
+import OtherContacts from "../../data/OtherContacts";
 
 export default class ContactsScreen extends Component {
   static navigationOptions = {
@@ -24,7 +26,8 @@ export default class ContactsScreen extends Component {
     super(props);
     this.state = {
       contacts: null,
-      myContacts: null
+      myContacts: null,
+      otherContacts: OtherContacts
     };
 
     if (Platform.OS === "ios") {
@@ -59,12 +62,11 @@ export default class ContactsScreen extends Component {
           translucent={false}
           networkActivityIndicatorVisible={true}
         />
-        <ContactsView
+        <LloydsContactsView
           contacts={this.state.contacts}
           navigation={this.props.navigation}
-          lloyds
         />
-        <ContactsView contacts={this.state.contacts} />
+        <OtherContactsView otherContacts={this.state.otherContacts} />
       </View>
     );
   }

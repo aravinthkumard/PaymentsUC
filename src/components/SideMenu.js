@@ -47,7 +47,7 @@ class SideMenu extends Component {
             />
           </View>
           <View style={{ padding: 5, marginTop: 14 }}>
-            <Text style={styles.customerName}>Mark Williams</Text>
+            <Text style={styles.customerName}>Mr. Thomas Jefferson</Text>
             <Text style={styles.customerID}>Cus.ID:87427642980</Text>
           </View>
         </View>

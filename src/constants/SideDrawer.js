@@ -3,7 +3,7 @@
 *
 */
 
-export const sideDrawer: SideDrawer[] = [
+export const sideDrawer = [
   {
     iconName: "user-circle",
     sideBarName: "Profile"

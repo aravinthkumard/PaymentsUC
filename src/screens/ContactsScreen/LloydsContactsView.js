@@ -20,8 +20,8 @@ export default class ContactsView extends Component {
   }
 
   render() {
-    const { contacts, lloyds } = this.props;
-    const header = lloyds ? "CONTACTS ON LLOYDS" : "ALL CONTACTS";
+    const { contacts } = this.props;
+    const header = "CONTACTS ON LLOYDS";
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -48,41 +48,25 @@ export default class ContactsView extends Component {
                   </Text>
                 </View>
                 <View style={{ width: 80 }}>
-                  {lloyds &&
-                    <TouchableOpacity
-                      onPress={() => {
-                        this.props.navigation.navigate("PaymentNavigation", {
-                          givenName: item.givenName,
-                          familyName: "347654  08642347"
-                        });
-                      }}
-                    >
-                      <View style={styles.buttonWrapper}>
-                        <Text style={styles.buttonText}>PAY</Text>
-                      </View>
-                    </TouchableOpacity>}
-                  {!lloyds &&
-                    <TouchableOpacity
-                      onPress={() => {
-                        Alert.alert(
-                          "Invite has been sent to selected contact."
-                        );
-                      }}
-                    >
-                      <View style={styles.buttonWrapper}>
-                        <Text style={styles.buttonText}>INVITE</Text>
-                      </View>
-                    </TouchableOpacity>}
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.props.navigation.navigate("PaymentNavigation", {
+                        givenName: item.givenName,
+                        familyName: "347654  08642347"
+                      });
+                    }}
+                  >
+                    <View style={styles.buttonWrapper}>
+                      <Text style={styles.buttonText}>PAY</Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
               </View>
-              {lloyds &&
-                item.phoneNumbers.map(phone =>
-                  <Text style={styles.phones}>
-                    M: {phone.number}
-                  </Text>
-                )}
-              {!lloyds &&
-                <Text style={styles.phones}>A/C: 987643 0096542375</Text>}
+              {item.phoneNumbers.map(phone =>
+                <Text style={styles.phones}>
+                  M: {phone.number}
+                </Text>
+              )}
             </View>}
           numColumns={1}
           keyExtractor={(item, index) => index.toString()}

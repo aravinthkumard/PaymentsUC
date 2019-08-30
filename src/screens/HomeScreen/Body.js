@@ -45,11 +45,11 @@ customerDetail = (
             overlayContainerStyle={{ backgroundColor: "#dc2a4d" }}
             rounded
             size="large"
-            title="MB"
+            title="TJ"
           />
         </Row>
         <Row style={{ justifyContent: "center" }}>
-          <Text style={{ fontSize: 25 }}>Mr. Michael Bocking</Text>
+          <Text style={{ fontSize: 25 }}>Mr. Thomas Jefferson</Text>
         </Row>
         <Row style={{ justifyContent: "center" }}>
           <Text style={{ color: "#383738" }}>
