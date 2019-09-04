@@ -20,7 +20,7 @@ export default class MoveMoney extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{ width: 250, height: 250 }} source={Vectors} />
+        <Image style={{ width: 350, height: 350 }} source={Vectors} />
         <Text style={styles.codePushText3}>
           Move Money details will be loaded...
         </Text>

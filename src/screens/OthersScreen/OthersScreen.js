@@ -11,6 +11,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 //import codePush from "react-native-code-push";
 
 import Wow from "../../../assets/images/Wow.png";
+import Vectors from "../../../assets/images/Vectors003.png";
 
 export default class OthersScreen extends Component {
   static navigationOptions = {
@@ -24,9 +25,9 @@ export default class OthersScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{ width: 175, height: 168 }} source={Wow} />
+        <Image style={{ width: 350, height: 350 }} source={Vectors} />
         <Text style={styles.codePushText3}>
-          Other details will be loaded...
+          Other details will be loaded soon...
         </Text>
       </View>
     );

@@ -44,7 +44,7 @@ export default class PaymentScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const givenName = navigation.getParam("givenName", "David Jason");
+    const givenName = navigation.getParam("givenName", "Daniel Higgins");
     const familyName = navigation.getParam("familyName", "347654  08642347");
     return (
       <View style={styles.container}>
@@ -74,7 +74,7 @@ export default class PaymentScreen extends React.Component {
               <TextInput
                 style={{ color: "gray", fontSize: 16, fontWeight: "bold" }}
               >
-                £ 00.00
+                £ 100.00
               </TextInput>
               <Text style={styles.title}>When </Text>
               <TextInput style={{ color: "gray", fontSize: 16 }}>

@@ -21,9 +21,9 @@ export default class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{ width: 250, height: 250 }} source={Vectors} />
+        <Image style={{ width: 350, height: 350 }} source={Vectors} />
         <Text style={styles.codePushText3}>
-          Profile details will be loaded...
+          Profile details will be loaded soon...
         </Text>
       </View>
     );

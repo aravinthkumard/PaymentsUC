@@ -43,5 +43,23 @@ export default (otherContacts = [
         number: "07300686537"
       }
     ]
+  },
+  {
+    givenName: "Marry",
+    familyName: "Brian",
+    phoneNumbers: [
+      {
+        number: "07387686563"
+      }
+    ]
+  },
+  {
+    givenName: "Tim",
+    familyName: "Harvey",
+    phoneNumbers: [
+      {
+        number: "07447698560"
+      }
+    ]
   }
 ]);
