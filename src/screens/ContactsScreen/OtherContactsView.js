@@ -56,15 +56,23 @@ export default class ContactsView extends Component {
                       });
                     }}
                   />
-                  <TouchableOpacity
-                    onPress={() => {
-                      Alert.alert("Invite has been sent to selected contact.");
-                    }}
-                  >
-                    <View style={styles.buttonWrapper}>
-                      <Text style={styles.buttonText}>INVITE</Text>
-                    </View>
-                  </TouchableOpacity>
+                  {item.phoneNumbers.map(phone =>
+                    <TouchableOpacity
+                      onPress={() => {
+                        Alert.alert(
+                          "Invite has been sent to " +
+                            item.givenName +
+                            " on " +
+                            phone.number +
+                            "."
+                        );
+                      }}
+                    >
+                      <View style={styles.buttonWrapper}>
+                        <Text style={styles.buttonText}>INVITE</Text>
+                      </View>
+                    </TouchableOpacity>
+                  )}
                 </View>
               </View>
               {item.phoneNumbers.map(phone =>
