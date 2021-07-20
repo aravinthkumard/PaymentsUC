@@ -13,7 +13,7 @@
     "native-base": "^2.13.5",
     "ramda": "^0.26.1",
     "react": "16.8.6",
-    "react-native": "0.60.5",
+    "react-native": "0.62.3",
     "react-native-accessible-selectable": "^0.1.0",
     "react-native-contacts": "^5.0.2",
     "react-native-easy-grid": "^0.2.2",
